@@ -1,0 +1,7 @@
+To add features to the project, fork the project and make your own personal repository. 
+Afterwards, create a new branch with the command `git checkout -b [branchName]` where [branchName] is the name of the issue you are working on. 
+
+After the issue has been completed, navigate back to the top level diretory at github.com/andeyt/hashproject and submit a pull-request.
+In the pull-request, describe what your code accomplishes and address how it completes the problem. Pay attention to the comments on your pull request.
+
+After your pull request has been approved, Andey will merge everything into master.
