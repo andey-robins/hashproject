@@ -7,3 +7,4 @@ Please read the contribution guidelines and feel free to ask any questions that 
 
 ### Contributors
 * **Andey Tuttle** - [andeyt](https://github.com/andeyt)
+* **Jeremiah Vaskis** - [Vaskis](https://github.com/Vaskis)
