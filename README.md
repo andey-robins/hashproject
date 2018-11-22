@@ -5,6 +5,8 @@ The implementation of a tracking tree. A system that stores event data and valid
 
 Please read the contribution guidelines and feel free to ask any questions that you may have in the issues tab of the repo.
 
+Build the project using `make` remembering that any additional .cpp files must be added to the makefile first.
+
 ### Contributors
 * **Andey Tuttle** - [andeyt](https://github.com/andeyt)
 * **Jeremiah Vaskis** - [Vaskis](https://github.com/Vaskis)
