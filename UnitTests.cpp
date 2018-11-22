@@ -11,6 +11,23 @@
 
 #include "UnitTests.h"
 
+//main driver test. Call this function to test all functions in UnitTests.cpp
+//written by Andey Tuttle
+//last updated November 21, 2018
+void testDriver() {
+    std::cout << "Project up." << std::endl;
+
+    std::cout << "Testing DataEntry Class..." << std::endl;
+    dataEntryTest();
+    std::cout << "DataEntry Class test completed." << std::endl << std::endl;
+
+    std::cout << "Testing Hash Algorithm..." << std::endl;
+    hashTest();
+    std::cout << "Hash Algorithm test completed." << std::endl << std::endl;
+
+    std::cout << "Spinning Project down." << std::endl;
+}
+
 //test of the DataEntry class
 //written by Jeremiah Vaskis
 //last updated November 21, 2018
@@ -77,5 +94,24 @@ void dataEntryTest() {
 
 
 	std::cout << std::endl << std::endl;
+
+}
+
+void hashTest() {
+
+    std::string stringTohash = "thisisunhashed";
+    std::cout << "Attempting to hash string: " << stringTohash << std::endl;
+    std::string hashedString = hash(stringTohash);
+    std::cout << "Hashed String            : " << hashedString << std::endl << std::endl;
+
+    stringTohash = "this is another unshashed string";
+    std::cout << "Attempting to hash string: " << stringTohash << std::endl;
+    hashedString = hash(stringTohash);
+    std::cout << "Hashed String            : " << hashedString << std::endl << std::endl;
+
+    stringTohash = "yet another unhashed string that goes on for such a long time, oh my god just stop already";
+    std::cout << "Attempting to hash string: " << stringTohash << std::endl;
+    hashedString = hash(stringTohash);
+    std::cout << "Hashed String            : " << hashedString << std::endl << std::endl;
 
 }

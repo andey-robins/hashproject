@@ -13,10 +13,21 @@
 #define _UNIT_TESTS_H_
 
 #include "DataEntry.h"
+#include "Hash.h"
+
+//main driver test. Call this function to test all functions in UnitTests.cpp
+//written by Andey Tuttle
+//last updated November 21, 2018
+void testDriver();
 
 // test of the DataEntry class
 // written by Jeremiah Vaskis
 // last updated November 21, 2018
 void dataEntryTest();
+
+// test of the Hash functions
+// written by Andey Tuttle
+// last updated November 21, 2018
+void hashTest();
 
 #endif

@@ -1,4 +1,4 @@
-// main.cpp
+// Hash.h
 // Final (GROUP) Project
 // Last Updated:	11/21/2018
 // Contributors:
@@ -7,14 +7,13 @@
 // Spencer Romberg	-	Project Member	(I/O & UI Work)
 // Liscensed under Apache 2.0 Liscense
 
-// Main class for Tracking Tree project
+// Header to a custom Hash Algorithm
 
-#include "UnitTests.h"
+#include "DataEntry.h"
+#include <iomanip>
+#include <sstream>
+#include <math.h>
+#include <algorithm>
 
-int main() {
-
-    //test all of project's individual pieces
-    testDriver();
-
-    return 0;
-}
+//returns a hashed string of the parameter unhashedString
+std::string hash(std::string unhashedString);
