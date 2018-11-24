@@ -1,15 +1,18 @@
 // main.cpp
 // Final (GROUP) Project
-// Last Updated:	11/21/2018
+// Last Updated:	11/24/2018
 // Contributors:
 // Andey Tuttle		-	Project Leader	(Recursion/Code-Gluer)
 // Jeremiah Vaskis	-	Project Member	(Class/Vector Work)
 // Spencer Romberg	-	Project Member	(I/O & UI Work)
 // Liscensed under Apache 2.0 Liscense
 
-// Main class for Tracking Tree project
+// Main file for Tracking Tree project
 
 #include "UnitTests.h"
+
+//function declarations
+int update(std::vector<DataEntry> & d, int index);
 
 int main() {
 

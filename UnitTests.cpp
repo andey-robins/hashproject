@@ -97,6 +97,9 @@ void dataEntryTest() {
 
 }
 
+//test of the Hash Functionalities
+//written by Andey Tuttle
+//last updated November 21, 2018
 void hashTest() {
 
     std::string stringTohash = "thisisunhashed";

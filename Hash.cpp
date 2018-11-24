@@ -1,6 +1,6 @@
 // Hash.cpp
 // Final (GROUP) Project
-// Last Updated:	11/21/2018
+// Last Updated:	11/24/2018
 // Contributors:
 // Andey Tuttle		-	Project Leader	(Recursion/Code-Gluer)
 // Jeremiah Vaskis	-	Project Member	(Class/Vector Work)
@@ -40,4 +40,61 @@ std::string hash(std::string unhashedString) {
     s.clear();
 
     return out;
+}
+
+//custom hash function to interface with a vector
+std::string hash(std::vector<std::string> d) {
+
+    std::string s;
+
+    for (int i = 0; i < d.size(); i++) {
+        s += d[i];
+    }
+
+    return hash(s);
+}
+
+//hash the id of the passed in data object
+void hashID(std::vector<DataEntry> & d, int index) {
+    d[index].setID(hash(d[index].getParentID() + d[index].getEvent()));
+}
+
+//hash of the children
+void hashChild(std::vector<DataEntry> & d, int index) {
+    //left
+    if (index * 2 <= d.size()) {
+        //exists
+        d[index].setLhash(hash(d[index * 2].getEvent().substr(0,4)) + hash(d[index].getLhist()).substr(0,4));
+    } else {
+        //doesn't
+        d[index].setLhash(NULL);
+    }
+
+    //right
+    if (index * 2 + 1 <= d.size()) {
+        //exists
+        d[index].setRhash(hash(d[index * 2 + 1].getEvent().substr(0,4)) + hash(d[index].getRhist()).substr(0,4));
+    } else {
+        //doesn't
+        d[index].setRhash(NULL);
+    }
+
+    hashHistory(d, index);
+}
+
+//push back history changes
+void hashHistory(std::vector<DataEntry> & d, int index) {
+    d[index].setRhist(d[index].getRhash());
+    d[index].setLhist(d[index].getLhash());
+}
+
+//recursively update up the tree
+int update(std::vector<DataEntry> & d, int index) {
+    if (index == 0) {
+        //base case
+        return 0;
+    } else {
+        hashChild(d, index);
+        update(d, index / 2);
+    }
 }
