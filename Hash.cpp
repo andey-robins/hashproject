@@ -61,8 +61,10 @@ void hashID(std::vector<DataEntry> & d, int index) {
 
 //hash of the children
 void hashChild(std::vector<DataEntry> & d, int index) {
+
+    std::cout << index << ", " << std::endl;
     //left
-    if (index * 2 <= d.size()) {
+    if (index * 2 < d.size()) {
         //exists
         d[index].setLhash(hash(d[index * 2].getEvent().substr(0,4)) + hash(d[index].getLhist()).substr(0,4));
     } else {
@@ -70,8 +72,10 @@ void hashChild(std::vector<DataEntry> & d, int index) {
         d[index].setLhash(NULL);
     }
 
+    std::cout << "finish left" << std::endl;
+
     //right
-    if (index * 2 + 1 <= d.size()) {
+    if (index * 2 + 1 < d.size()) {
         //exists
         d[index].setRhash(hash(d[index * 2 + 1].getEvent().substr(0,4)) + hash(d[index].getRhist()).substr(0,4));
     } else {
@@ -84,17 +88,25 @@ void hashChild(std::vector<DataEntry> & d, int index) {
 
 //push back history changes
 void hashHistory(std::vector<DataEntry> & d, int index) {
+    std::cout << "index" << std::endl;
     d[index].setRhist(d[index].getRhash());
     d[index].setLhist(d[index].getLhash());
 }
 
 //recursively update up the tree
 int update(std::vector<DataEntry> & d, int index) {
+
+    std::cout << index << std::endl;
+
     if (index == 0) {
         //base case
         return 0;
     } else {
+        std::cout << "test" << std::endl;
         hashChild(d, index);
         update(d, index / 2);
     }
+
+    //this should never happen, but it'll panic the program if it does.
+    return -1;
 }

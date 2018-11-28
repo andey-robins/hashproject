@@ -1,6 +1,6 @@
 // UnitTests.cpp
 // Final (GROUP) Project
-// Last Updated:	11/21/2018
+// Last Updated:	11/24/2018
 // Contributors:
 // Andey Tuttle		-	Project Leader	(Recursion/Code-Gluer)
 // Jeremiah Vaskis	-	Project Member	(Class/Vector Work)
@@ -13,7 +13,7 @@
 
 //main driver test. Call this function to test all functions in UnitTests.cpp
 //written by Andey Tuttle
-//last updated November 21, 2018
+//last updated November 24, 2018
 void testDriver() {
     std::cout << "Project up." << std::endl;
 
@@ -24,6 +24,10 @@ void testDriver() {
     std::cout << "Testing Hash Algorithm..." << std::endl;
     hashTest();
     std::cout << "Hash Algorithm test completed." << std::endl << std::endl;
+
+    std::cout << "Testing Update Function..." << std::endl;
+    updateTest();
+    std::cout << "Update Function test complete." << std::endl << std::endl;
 
     std::cout << "Spinning Project down." << std::endl;
 }
@@ -116,5 +120,68 @@ void hashTest() {
     std::cout << "Attempting to hash string: " << stringTohash << std::endl;
     hashedString = hash(stringTohash);
     std::cout << "Hashed String            : " << hashedString << std::endl << std::endl;
+
+}
+
+//test of recursive update Functionalities
+//written by Andey Tuttle
+//last updated November 24, 2018
+void updateTest() {
+
+    std::cout << "Building objects..." << std::endl;
+
+    std::vector<DataEntry> structure;
+
+    DataEntry a;
+    DataEntry b;
+    DataEntry c;
+    DataEntry d;
+
+    a.setParentID("gbaycssa");
+    a.setEvent("Id generated with random.org");
+    a.setID(hash(a.getParentID() + a.getEvent()));
+
+    b.setParentID("6wnordrc");
+    b.setEvent("So was this one.");
+    b.setID(hash(b.getParentID() + b.getEvent()));
+
+    c.setParentID("nqe6mern");
+    c.setEvent("As was this, but it's the final one we'll use");
+    c.setID(hash(c.getParentID() + c.getEvent()));
+
+    d.setParentID("einwo630");
+    d.setEvent("Just kidding, we added this later.");
+    d.setID(hash(d.getParentID() + d.getEvent()));
+
+    structure.push_back(a);
+    structure.push_back(b);
+    structure.push_back(c);
+    structure.push_back(d);
+
+    std::cout << "Objects successfully built. Printing Objects..." << std::endl;
+
+    for (int i = 0; i < structure.size(); i++) {
+        std::cout << i + 1 << std::endl;
+        structure[i].printTop();
+        structure[i].printLhist();
+        structure[i].printRhist();
+    }
+
+    std::cout << "Objects successfully printed. Attempting to update children and history recursively. " << std::endl;
+
+    for (int i = 0; i < structure.size(); i++) {
+        update(structure, i);
+    }
+
+    std::cout << "Children and history have been updated. Printing objects again." << std::endl;
+
+    for (int i = 0; i < structure.size(); i++) {
+        std::cout << i + 1 << std::endl;
+        structure[i].printTop();
+        structure[i].printLhist();
+        structure[i].printRhist();
+    }
+
+    std::cout << "Objects successfully printed." << std::endl << std::endl;
 
 }

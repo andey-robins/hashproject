@@ -1,4 +1,4 @@
-// main.cpp
+// Dependencies.h
 // Final (GROUP) Project
 // Last Updated:	11/24/2018
 // Contributors:
@@ -7,14 +7,17 @@
 // Spencer Romberg	-	Project Member	(I/O & UI Work)
 // Liscensed under Apache 2.0 Liscense
 
-// Main file for Tracking Tree project
+// A collection of all the project wide include statements
 
-#include "UnitTests.h"
+#ifndef _DEPENDENCIES_H_
+#define _DEPENDENCIES_H_
 
-int main() {
+#include <string>
+#include <vector>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <math.h>
+#include <algorithm>
 
-    //test all of project's individual pieces
-    testDriver();
-
-    return 0;
-}
+#endif

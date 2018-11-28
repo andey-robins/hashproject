@@ -9,11 +9,10 @@
 
 // Header to a custom Hash Algorithm
 
+#ifndef _HASH_H_
+#define _HASH_H_
+
 #include "DataEntry.h"
-#include <iomanip>
-#include <sstream>
-#include <math.h>
-#include <algorithm>
 
 //returns a hashed string of the parameter unhashedString
 std::string hash(std::string unhashedString);
@@ -24,3 +23,5 @@ void hashID(std::vector<DataEntry> & d, int index);
 void hashChild(std::vector<DataEntry> & d, int index);
 void hashHistory(std::vector<DataEntry> & d, int index);
 int update(std::vector<DataEntry> & d, int index);
+
+#endif

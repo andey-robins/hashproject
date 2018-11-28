@@ -1,6 +1,6 @@
 // DataEntry.h
 // Final (GROUP) Project
-// Last Updated:	11/21/2018
+// Last Updated:	11/24/2018
 // Contributors:
 // Andey Tuttle		-	Project Leader	(Recursion/Code-Gluer)
 // Jeremiah Vaskis	-	Project Member	(Class/Vector Work)
@@ -13,9 +13,7 @@
 #ifndef _DATA_ENTRY_H
 #define _DATA_ENTRY_H
 
-#include <string>
-#include <vector>
-#include <iostream>
+#include "Dependencies.h"
 
 class DataEntry {
 public:

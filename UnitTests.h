@@ -1,6 +1,6 @@
 // UnitTests.cpp
 // Final (GROUP) Project
-// Last Updated:	11/21/2018
+// Last Updated:	11/24/2018
 // Contributors:
 // Andey Tuttle		-	Project Leader	(Recursion/Code-Gluer)
 // Jeremiah Vaskis	-	Project Member	(Class/Vector Work)
@@ -12,12 +12,11 @@
 #ifndef _UNIT_TESTS_H_
 #define _UNIT_TESTS_H_
 
-#include "DataEntry.h"
 #include "Hash.h"
 
 //main driver test. Call this function to test all functions in UnitTests.cpp
 //written by Andey Tuttle
-//last updated November 21, 2018
+//last updated November 24, 2018
 void testDriver();
 
 // test of the DataEntry class
@@ -29,5 +28,10 @@ void dataEntryTest();
 // written by Andey Tuttle
 // last updated November 21, 2018
 void hashTest();
+
+// test of recursive update Functionalities
+// written by Andey Tuttle
+// last updated November 24, 2018
+void updateTest();
 
 #endif
