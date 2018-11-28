@@ -1,6 +1,6 @@
 // DataEntry_WithTests.cpp
 // Final (GROUP) Project
-// Last Updated:	11/21/2018
+// Last Updated:	11/28/2018
 // Contributors:
 // Andey Tuttle		-	Project Leader	(Recursion/Code-Gluer)
 // Jeremiah Vaskis	-	Project Member	(Class/Vector Work)
@@ -124,18 +124,5 @@ bool DataEntry::is_empty() {
 }
 
 // Constructors
-// I don't know if I have a good grasp on Constructors,
-// here is a default constructor, and some commented out code
-// for what I guess could be some other types?
-// I think how you implement you main code would determine how
-// many constructor types you would need beyond this.
-// Default:
-//DataEntry() = default;
-// Event input:
-// DOES NOT update anything else, also is_empty() only checks "Event"
-// so unless you immediately set[variable name] all of the other stuff
-// then there could be a node that would not be completely initialized
-// not having ID's, Hashes, etc.
-//DataEntry(string s) {
-//	setEvent(s);
-//}
+DataEntry::DataEntry() {}
+DataEntry::~DataEntry() {}
