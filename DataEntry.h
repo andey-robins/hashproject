@@ -1,6 +1,6 @@
 // DataEntry.h
 // Final (GROUP) Project
-// Last Updated:	11/21/2018
+// Last Updated:	11/28/2018
 // Contributors:
 // Andey Tuttle		-	Project Leader	(Recursion/Code-Gluer)
 // Jeremiah Vaskis	-	Project Member	(Class/Vector Work)
@@ -19,6 +19,10 @@
 
 class DataEntry {
 public:
+    //Constructors
+    DataEntry();
+    ~DataEntry();
+
 	// Set Functions
 	void setID(std::string s);
 	void setParentID(std::string s);
@@ -53,9 +57,9 @@ public:
 
 private:
     //data values
-	std::string ID		= "";
-	std::string ParentID	= "";
-	std::string Event	= "";
+	std::string ID = "";
+	std::string ParentID = "";
+	std::string Event = "";
 	std::string Rhash = "";
 	std::string Lhash = "";
 	std::vector<std::string> Lhist;
