@@ -17,7 +17,7 @@
 
 //main driver test. Call this function to test all functions in UnitTests.cpp
 //written by Andey Tuttle
-//last updated November 21, 2018
+//last updated November 28, 2018
 void testDriver();
 
 // test of the DataEntry class
@@ -29,5 +29,10 @@ void dataEntryTest();
 // written by Andey Tuttle
 // last updated November 21, 2018
 void hashTest();
+
+// test of the recursive hash update functions
+// written by Andey Tuttle
+// last updated November 28, 2018
+void structureTest();
 
 #endif
