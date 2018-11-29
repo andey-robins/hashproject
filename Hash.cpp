@@ -1,6 +1,6 @@
 // Hash.cpp
 // Final (GROUP) Project
-// Last Updated:	11/21/2018
+// Last Updated:	11/28/2018
 // Contributors:
 // Andey Tuttle		-	Project Leader	(Recursion/Code-Gluer)
 // Jeremiah Vaskis	-	Project Member	(Class/Vector Work)
@@ -40,4 +40,59 @@ std::string hash(std::string unhashedString) {
     s.clear();
 
     return out;
+}
+
+//take a new event and set up the node in the tree with everything it can
+void newEntry(std::vector<DataEntry> & d, int index, std::string event) {
+
+    int parentIndex;
+
+    if (index % 2 == 0) {
+        parentIndex = floor((index - 1) / 2.0);
+    } else {
+        parentIndex = floor(index / 2.0);
+    }
+
+    d[index].setParentID(d[parentIndex].getID());
+    d[index].setEvent(event);
+    d[index].setID(hash(d[parentIndex].getID() + d[index].getEvent()));
+
+    //track up the tree, updating as you go
+    updateParent(d, parentIndex, index);
+}
+
+
+//grow the tracking tree to have a new row of elements
+void grow(std::vector<DataEntry> & d) {
+    int size = d.size();
+
+    for (int i = 0; i <= size; i++) {
+        d.push_back(DataEntry());
+    }
+}
+
+
+//move up the tree updating as we go
+void updateParent(std::vector<DataEntry> & d, int index, int child) {
+
+    //hash the child's contents
+    std::string toHash = hash(d[child].getID() + d[child].getParentID() + d[child].getEvent() + d[child].getLhash() + d[child].getRhash());
+
+    int parentIndex;
+
+    //check if the child is left or right
+    if (child % 2 == 0) {
+        d[index].setRhash(toHash);
+        d[index].setRhist(toHash);
+        parentIndex = floor((index - 1) / 2.0);
+    } else {
+        d[index].setLhash(toHash);
+        d[index].setLhist(toHash);
+        parentIndex = floor(index / 2.0);
+    }
+
+    //base exit if the recursion is at the root of the tree
+    if (index != 0) {
+        updateParent(d, parentIndex, index);
+    }
 }

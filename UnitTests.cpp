@@ -1,6 +1,6 @@
 // UnitTests.cpp
 // Final (GROUP) Project
-// Last Updated:	11/21/2018
+// Last Updated:	11/28/2018
 // Contributors:
 // Andey Tuttle		-	Project Leader	(Recursion/Code-Gluer)
 // Jeremiah Vaskis	-	Project Member	(Class/Vector Work)
@@ -13,7 +13,7 @@
 
 //main driver test. Call this function to test all functions in UnitTests.cpp
 //written by Andey Tuttle
-//last updated November 21, 2018
+//last updated November 28, 2018
 void testDriver() {
     std::cout << "Project up." << std::endl;
 
@@ -24,6 +24,10 @@ void testDriver() {
     std::cout << "Testing Hash Algorithm..." << std::endl;
     hashTest();
     std::cout << "Hash Algorithm test completed." << std::endl << std::endl;
+
+    std::cout << "Testing Structure..." << std::endl;
+    structureTest();
+    std::cout << "Structure test completed." << std::endl << std::endl;
 
     std::cout << "Spinning Project down." << std::endl;
 }
@@ -97,7 +101,12 @@ void dataEntryTest() {
 
 }
 
+// test of the Hash functions
+// written by Andey Tuttle
+// last updated November 21, 2018
 void hashTest() {
+
+    //the following code will demonstrate that the hash function produces results as expected
 
     std::string stringTohash = "thisisunhashed";
     std::cout << "Attempting to hash string: " << stringTohash << std::endl;
@@ -114,4 +123,37 @@ void hashTest() {
     hashedString = hash(stringTohash);
     std::cout << "Hashed String            : " << hashedString << std::endl << std::endl;
 
+}
+
+// test of the recursive hash update functions
+// written by Andey Tuttle
+// last updated November 28, 2018
+void structureTest() {
+
+    //the following code shows that the recusive updates of the tree function as expected
+
+    //declarations for the structure test
+    std::vector<DataEntry> trackingTree;
+    DataEntry root;
+    root.setEvent("this is the root event");
+    root.setParentID("rootParentId");
+    root.setID(hash(root.getParentID() + root.getEvent()));
+    trackingTree.push_back(root);
+    grow(trackingTree);
+    int index = 1;
+
+    //actual conduct of the structure test
+    trackingTree[index].printTop();
+    newEntry(trackingTree, index, "This is the second event");
+    trackingTree[index].printTop();
+    index++;
+    trackingTree[0].printTop();
+
+    newEntry(trackingTree, index, "This is the third event");
+    trackingTree[0].printTop();
+    index++;
+
+    grow(trackingTree);
+    newEntry(trackingTree, index, "This is the fourth event");
+    trackingTree[0].printTop();
 }

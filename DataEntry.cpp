@@ -82,7 +82,7 @@ void DataEntry::printTop() {
 	std::cout << "ParentID:\t" << ParentID << std::endl;
 	std::cout << "Event:\t\t" << Event << std::endl;
 	std::cout << "Lhash:\t\t" << Lhash << std::endl;
-	std::cout << "Rhash:\t\t" << Lhash << std::endl;
+	std::cout << "Rhash:\t\t" << Rhash << std::endl;
 }
 // Prints Left history vector
 void DataEntry::printLhist() {
