@@ -10,3 +10,4 @@ Build the project using `make` remembering that any additional .cpp files must b
 ### Contributors
 * **Andey Tuttle** - [andeyt](https://github.com/andeyt)
 * **Jeremiah Vaskis** - [Vaskis](https://github.com/Vaskis)
+* **Spencer Romberg** - [jayfeather31](https://github.com/jayfeather31)
