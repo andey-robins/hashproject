@@ -1,6 +1,6 @@
 // main.cpp
 // Final (GROUP) Project
-// Last Updated:	12/4/2018
+// Last Updated:	12/8/2018
 // Contributors:
 // Andey Tuttle		-	Project Leader	(Recursion/Code-Gluer)
 // Jeremiah Vaskis	-	Project Member	(Class/Vector Work)
@@ -17,21 +17,30 @@ int main() {
     //testDriver();
 
     //main functionality
-    //written by Spencer Romberg
-	std::vector<DataEntry> main_trackingTree;
-	DataEntry main_root;
-	main_root.setEvent("root event");
-	main_root.setParentID("rootParentId");
-	main_root.setID(hash(main_root.getParentID() + main_root.getEvent()));
-	main_trackingTree.push_back(main_root);
-	grow(main_trackingTree);
+    //UI/UX by Spencer Romberg
+    //hooks to tracking tree by Andey Tuttle
+
+	std::vector<DataEntry> trackingTree;
+	DataEntry root;
+
+    std::string firstEvent;
+    std::cout << "Please enter in the first event." << std::endl;
+    getline(std::cin, firstEvent);
+	root.setEvent(firstEvent);
+	root.setParentID("nUs667YlDW"); //this ID was randomly generated with random.org
+	root.setID(hash(root.getParentID() + root.getEvent()));
+	trackingTree.push_back(root);
+	grow(trackingTree);
 	int index = 1;
+
+    //main loop variable
 	bool cont = true;
+    std::string nextCommand;
 
 
 	while (cont) {
 		//prompt the user for input
-		std::cout << "Type input to add in a data entry. Type print to print out the IDs or a specific ID.\nFor additional information on any of these functions, type help." << endl;
+		std::cout << std::endl << std::endl << std::endl << "Type input to add in a data entry. Type print to print out the IDs or a specific ID.\nFor additional information on any of these functions, type help." << std::endl;
 		//get the user input for the command
 		getline(std::cin, nextCommand);
 		if (nextCommand == "h" || nextCommand == "Help" || nextCommand == "help") {
@@ -46,59 +55,84 @@ int main() {
 			std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
 		}
 		if (nextCommand == "i" || nextCommand == "Input" || nextCommand == "input") {
-		//executes code to enter a new input into the vector
-			input();
+
+            //executes code to enter a new input into the vector
+			std::cout << "Enter in the event: " << std::endl;
+            std::string tempEvent;
+            getline(std::cin, tempEvent);
+
+            //check to see if the tree is full
+            if (index > trackingTree.size()) {
+                grow(trackingTree);
+            }
+
+            //push out the new entry
+            newEntry(trackingTree, index, tempEvent);
+            index++;
+
 		} else if (nextCommand == "p" || nextCommand == "Print" || nextCommand == "print") {
 			bool print_confirm = true;
-			string confirm;
+			std::string confirm;
 			//executes code to print out all of the IDs, or to print out just a specific ID.
-			while (print_confirm) {
+			std::cout << "Do you wish to print out a visualization of the tree? (Y/N): ";
+			getline(std::cin, confirm);
 
-				std::cout << "Do you wish to print out all of the IDs? (Y/N): ";
-				std::cin >> confirm;
-				if (confirm == "y" || confirm == "Y") {
-					print_all();
-					bool print_confirm = false;
-				}
-				if (confirm == "n" || confirm == "N") {
-					print_specific();
-					bool print_confirm = false;
-				}
-			}
+			if (confirm == "y" || confirm == "Y") {
+                //visualise the tree
+                std::cout << std::endl << "Root Node:";
+                trackingTree[0].printTop();
+
+				for (int i = 1; i < index; i++) {
+                    std::cout << std::endl << "Child of node " << floor((i - 1) / 2.0);
+                    trackingTree[i].printTop();
+                }
+
+			} else if (confirm == "n" || confirm == "N") {
+                //print out a specific element
+                std::cout << "Please enter the ID of the element to view in its entirety." << std::endl;
+                std::string tempId;
+                getline(std::cin, tempId);
+
+                //go through the elemnts to find the element
+                int foundIndex = -1;
+
+                for (int i = 0; i < index; i++) {
+                    if (trackingTree[i].getID() == tempId) {
+                        foundIndex = i;
+                    }
+                }
+
+                //print the event if it's found or an error if it isn't
+                if (foundIndex != -1) {
+                    trackingTree[foundIndex].printTop();
+                    trackingTree[foundIndex].printLhist();
+                    trackingTree[foundIndex].printRhist();
+                } else {
+                    std::cout << "Invalid ID entered, type 'h' for help." << std::endl;
+                }
+
+			} else {
+                //not y/n input
+                std::cout << "Invalid command, please enter 'h' to see help." << std::endl;
+            }
+
 		}  else if (nextCommand == "q" || nextCommand == "Quit" || nextCommand == "quit") {
 
-			bool print_confirm = true;
-			string confirm;
-			//executes code to print out all of the IDs, or to print out just a specific ID.
-			while (print_confirm) {
+            //quit the program
+			std::string confirm;
 
-				std::cout << "Are you sure you wish to quit? (Y/N): ";
-				std::cin >> confirm;
-				if (confirm == "y" || confirm == "Y") {
-					bool print_confirm = false;
-					bool cont = false;
-				} else if (confirm == "n" || confirm == "N") {
-					bool print_confirm = false;
-					std::cout << std::endl << std::endl;
-				}
-			}
+			std::cout << "Are you sure you wish to quit? (Y/N): ";
+			getline(std::cin, confirm);
+			if (confirm == "y" || confirm == "Y") {
+				break;
+			} else {
+                std::cout << "Enter 'h' to get help with this program." << std::endl;
+            }
 		}
-		std::cout << std::endl;
-		}
-	    system("pause");
-		return 0;
+    }
+
+    //note: to run through visual studio, uncomment the below system pause.
+    //system("pause");
 
     return 0;
-}
-
-void input() {
-
-}
-
-void print_all() {
-
-}
-
-void print_specific() {
-
 }
